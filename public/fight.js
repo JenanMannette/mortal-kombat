@@ -9,6 +9,10 @@ var answerB = document.getElementById('answer-b');
 var answerC = document.getElementById('answer-c');
 var submit = document.getElementsByClassName('submit');
 
+button.addEventListener('click', function () {
+    window.location.reload();
+});
+
 function mySubmit () {
   return false;
 }
@@ -30,6 +34,23 @@ window.onload = function () {
   updateQuestion()
 };
 
+player1 = {
+    health: 100,
+    lowerHealth: function () {
+        this.health = this.health - 10;
+    }
+};
+
+player2 = {
+    health: 100,
+    lowerHealth: function () {
+        this.health = this.health - 10;
+    },
+    increaseHeath: function () {
+        this.health = this.health + 5;
+    }
+};
+
 forms.addEventListener("click", function (e) {
   if (e.target.className === "submit") {
     orbit.get("/" + e.target.id + ".json", function () {
@@ -39,6 +60,7 @@ forms.addEventListener("click", function (e) {
           if (e.target.form[i].value === data) {
             if(player1.health > 0) {
               player1.lowerHealth();
+                player2.increaseHeath();
               player[0].setAttribute("style", "width: " + player1.health + "%");
               scorpion.setAttribute("src", "/public/sc-kick.png");
               setTimeout(function () {
@@ -57,20 +79,6 @@ forms.addEventListener("click", function (e) {
 
 });
 
-player1 = {
-  health: 100,
-  lowerHealth: function () {
-    this.health = this.health - 10;
-  }
-};
-
-player2 = {
-  health: 100,
-  lowerHealth: function () {
-    this.health = this.health - 10;
-  }
-};
-
 var interval = setInterval(function () {
   if (player2.health > 0) {
     player2.lowerHealth();
@@ -83,4 +91,4 @@ var interval = setInterval(function () {
     clearInterval(interval);
     alert("PLAYER 1 WINS");
   }
-}, 2000);
+}, 2500);
