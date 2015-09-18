@@ -81,9 +81,9 @@ forms.addEventListener("click", function (e) {
 
 var interval = setInterval(function () {
   if (player2.health > 0) {
+    subZero.setAttribute("src", "/public/sz-kick.png");
     player2.lowerHealth();
     player[1].setAttribute("style", "width: " + player2.health + "%");
-    subZero.setAttribute("src", "/public/sz-kick.png");
     setTimeout(function () {
       subZero.setAttribute("src", "/public/sz-standing.png");
     }, 300);
