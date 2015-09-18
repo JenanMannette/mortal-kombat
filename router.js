@@ -1,6 +1,6 @@
 require('dotenv').load();
 var routes = require("routes")(),
-  db = require("monk")(process.env.MONGO_URI),
+  db = require("monk")(process.env.MONGOLABgi_URI),
   questions = db.get("questions"),
   qRoutes = require("./routes/questions");
 
